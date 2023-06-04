@@ -28,12 +28,12 @@ def test_main(text_input, expected_label):
     "text_input, threshold_input, expected_label",
     [
         ("What an idiotic statement!", 0.9, "obscene"),
-        ("As fat as a giant hippo!", 0.8, "insult")
+        ("As fat as a giant hippo!", 0.8, "insult"),
     ],
 )
 def test_threshold(text_input, threshold_input, expected_label):
     """Function to test the toxicity classifier CLI tool with custom threshold using click CliRunner"""
-    
+
     runner = CliRunner()
     result = runner.invoke(main, ["--text", text_input, "--threshold", threshold_input])
     assert result.exit_code == 0

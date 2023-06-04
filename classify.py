@@ -13,7 +13,7 @@ def classify_text(text, threshold):
     Args:
         text(str): String for toxicity classification.
         threshold(float): Threshold to apply for filtering classification results.
-    
+
     Returns:
         final_df_result(pd.DataFrame or str): Result of classification.
     """
