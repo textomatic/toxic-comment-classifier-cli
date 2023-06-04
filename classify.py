@@ -6,8 +6,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-@click.command()
-@click.option("--text")
 def classify_text(text):
     classifier = pipeline(
         task="text-classification",
@@ -18,12 +16,21 @@ def classify_text(text):
     )
     result = classifier(text)
     df_result = pd.DataFrame(result[0])
-    final_df_result = df_result[df_result['score'] >= 0.5]
+    final_df_result = df_result[df_result["score"] >= 0.5]
+    if len(final_df_result) == 0:
+        final_df_result = "No toxicity detected!"
+    return final_df_result
+
+
+@click.command()
+@click.option("--text")
+def main(text):
+    result = classify_text(text)
     click.echo("Classification complete!")
     click.echo("-" * 50)
-    click.echo(final_df_result)
+    click.echo(result)
 
 
 if __name__ == "__main__":
     # pylint: disable=no-value-for-parameter
-    classify_text()
+    main()

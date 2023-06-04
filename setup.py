@@ -12,6 +12,6 @@ setup(
         'console_scripts': ['toxic_classify = classify:main']
     },
     install_requires=requirements,
-    version='0.0.1',
+    version='1.0.0',
     url='https://github.com/textomatic/toxic-comment-classifier-cli'
 )
